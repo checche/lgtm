@@ -1,6 +1,7 @@
 import requests
 from io import BytesIO
 from pathlib import Path
+import random
 
 
 class LocalImage():
@@ -45,6 +46,22 @@ class _LoremFlickr(RemoteImage):
 KeywordImage = _LoremFlickr
 
 
+class GhibliImage(RemoteImage):
+    GHIBRI_URL = 'http://www.ghibli.jp/gallery/'
+    TITLES = ['karigurashi', 'chihiro']
+    FORMAT = '.jpg'
+
+    def __init__(self):
+        super().__init__(self._build_url())
+
+    def _build_url(self):
+        title = random.choice(self.TITLES)
+        number = str(random.randint(1, 50)).zfill(3)
+        return (
+            f'{self.GHIBRI_URL}{title}{number}{self.FORMAT}'
+        )
+
+
 def ImageSource(keyword):
     """最適なイメージソースのインスタンスを返す
 
@@ -56,6 +73,8 @@ def ImageSource(keyword):
         return RemoteImage(keyword)
     elif Path(keyword).exists():
         return LocalImage(keyword)
+    elif keyword == 'ghibli':
+        return GhibliImage()
     else:
         return KeywordImage(keyword)
 
