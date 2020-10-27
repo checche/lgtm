@@ -46,7 +46,7 @@ KeywordImage = _LoremFlickr
 
 
 def ImageSource(keyword):
-    """最適なイメージソースクラスを返す
+    """最適なイメージソースのインスタンスを返す
 
     Args:
         keyword (str): URL or local_path or query
@@ -61,5 +61,12 @@ def ImageSource(keyword):
 
 
 def get_image(keyword):
-    """画像のファイルオブジェクトを返す"""
+    """[summary]
+
+    Args:
+        keyword (str): キーワード(URL or local_path or query)
+
+    Returns:
+        _io.BytesIO | _io.BufferedReader : ファイルオブジェクト
+    """
     return ImageSource(keyword).get_image()
