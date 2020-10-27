@@ -1,7 +1,6 @@
-from tempfile import TemporaryDirectory
 import unittest
 from lgtm.image_source import (
-    get_image, ImageSource, KeywordImage, LocalImage, RemoteImage
+    _LoremFlickr, ImageSource, KeywordImage, LocalImage, RemoteImage
 )
 
 
@@ -25,3 +24,27 @@ class ImageSourceTest(unittest.TestCase):
         actual = ImageSource(keyword)
 
         self.assertEqual(type(actual), type(expected))
+
+
+class LoremFlickrTest(unittest.TestCase):
+    lorem_flickr = _LoremFlickr('cat')
+
+    def test_build_url(self):
+        actual = self.lorem_flickr._build_url('cat')
+
+        expected = (
+            f'{self.lorem_flickr.LOREM_FLICKR_URL}/'
+            f'{self.lorem_flickr.WIDTH}/{self.lorem_flickr.HEIGHT}/cat'
+        )
+
+        self.assertEqual(actual, expected)
+
+    def test_init(self):
+        actual = self.lorem_flickr._url
+
+        expected = (
+            f'{self.lorem_flickr.LOREM_FLICKR_URL}/'
+            f'{self.lorem_flickr.WIDTH}/{self.lorem_flickr.HEIGHT}/cat'
+        )
+
+        self.assertEqual(actual, expected)
