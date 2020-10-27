@@ -11,6 +11,7 @@ pillow = "==6.2.1"
 requests = "==2.22.0"
 flake8 = "*"
 autopep8 = "*"
+lgtm = {editable = true, path = "."}
 
 [requires]
 python_version = "3.8"

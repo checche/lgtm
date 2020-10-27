@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1b7e2b61dfc7838eec5be3d50097a43c824cd9fcee3ec44b82941fe5f32a6043"
+            "sha256": "f7883fce3b4d0a8afa45d8676f1c95f7477ab457c58b11ec8592f4493916ef16"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -59,6 +59,10 @@
                 "sha256:ea8b7f6188e6fa117537c3df7da9fc686d485087abf6ac197f9c46432f7e4a3c"
             ],
             "version": "==2.8"
+        },
+        "lgtm": {
+            "editable": true,
+            "path": "."
         },
         "mccabe": {
             "hashes": [
